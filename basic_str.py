@@ -160,12 +160,57 @@ def align_methods():
     print("ZFILL:", "1234".zfill(5))    # 5자리 확보, 내용을 채운 후, 빈자리는 0으로 채움
     print("ZFILL:", "1234567890".zfill(5))  # 확보한 자리는 최소 공간,
                                             # 자리수 넘쳐도 내용은 잘리지 않음
+
+
+
+    # 포맷은 부가적으로 소수점 자리를 제한할 수 있다.
+
+
+
+def string_format():
+    """
+    문자열 포맷 정리
+    """
+    # C Style 문자열 포맷
+    # %s(문자열), %c, %d(정수), %f(실수), %o, %x, %%(Literal %)
+    fmt = "%d개의 %s 중에서 %d개를 먹었다"
+    print(fmt % (10, '사과', 3))
+    print("현재 이자율은 %.2f%%입니다" % 1.2345) # %f 포맷은 부가적으로 소숫점 자리를 제한할 수있다
+
+    # named formatting
+    # 바인딩 순서에 유의하지 않아도 된다
+    fmt = "%(total)d개의 %(fruit)s 중에서 %(eat)d개를 먹었다"
+    print(fmt % {"fruit": "사과", "eat": 3, "total": 10})
+
+    # format 메서드
+    fmt = "{}개의 {} 중에서 {}개를 먹었다"
+    print(fmt.format(10, "사과", 3))
+    fmt = "{0}개의 {1} 중에서 {2}개를 먹었다" # 파라미터의 순서 명시
+    print(fmt.format(10, "사과", 3))
+    fmt = "{total}개의 {fruit} 중에서 {eat}개를 먹었다"
+    print(fmt.format(eat=3, fruit="사과", total=10))  # 함수의 인자형태로 전달
+    # 사전 객체 이용한 named parameter 연결: .format_map 메서드
+
+    print("{total}개의 {fruit} 중에서 {eat}개를 먹었다".format_map({
+        "total": 10, "fruit": "사과", "eat": 3
+    }))
+
+    # 가장 최신 스타일: F-문자열
+    #   문자열 앞에 f or F
+    #   변수의 이름 or 표현식을 {} 안에 포함히서 값을 문자열로 가져온다
+    total, fruit, eat = 10, 'apple', 3
+    print(f"{total}개의 {fruit.upper()} 중에서 {eat}개를 먹어서 {total - eat}개가 남았다")
+
+
+
+
+
 if __name__ == "__main__":
     # define_str()
     # string_oper()
-    # transform_methods()
-    # search_methods()
     # modify_replace_methods()
     # split_join_methods()
     # check_method()
-    align_methods()
+    # align_methods()
+    string_format()
+
