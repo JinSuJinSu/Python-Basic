@@ -1,14 +1,18 @@
-initial_value = input('수를 입력하세요')
+initial_value = input('수를 입력하세요:')
 
-if initial_value.isdigit():
+running = True
 
-    result_array = [x for x in range(1,int(initial_value)+1) if x%3==0]
+while running:
+    if initial_value.isdigit():
 
-    result = sum(result_array)
+        result_array = [x for x in range(1, int(initial_value) + 1) if x % 3 == 0]
 
-    print('1부터 {}까지 3의 배수의 합 = {}'.format(initial_value,result))
+        result = sum(result_array)
 
-else:
-    print('정수가 아닙니다. 다시 입력하세요')
+        print('1부터 {}까지 3의 배수의 합 = {}'.format(initial_value, result))
 
+        running = False
 
+    else:
+        print('정수가 아닙니다. 다시 입력하세요')
+        initial_value = input('수를 입력하세요:')

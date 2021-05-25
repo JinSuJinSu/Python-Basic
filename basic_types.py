@@ -108,3 +108,15 @@ if __name__ == "__main__":
     # float_ex()
     # complex_ex()
     builtin_math_function()
+
+
+
+    fruit_dict = {
+        3: 'apple',
+        2: 'banana',
+        6: 'mango',
+        4: 'apricot',
+        1: 'kiwi',
+        8: 'orange'}
+
+    print(list(fruit_dict.items()))

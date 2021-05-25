@@ -97,3 +97,10 @@ def clean_string(strings, *funcs):
 
 cleaned = clean_string(dirty_strings, str.strip, str.title)
 print("CLEANED:", cleaned)
+
+print("__name__",__name__)
+
+if __name__ == '__main__':
+    print('최상위 모듈로 실행되었습니다.')
+else:
+    print('import된 모듈입니다.')
