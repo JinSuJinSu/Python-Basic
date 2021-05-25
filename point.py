@@ -24,33 +24,36 @@ class Point:
         return "Point({}, {})".format(self.x, self.y)
 
     def __add__(self, other):
-        if isinstance(other, Point):
-            self.x += other.x
-            self.y += other.y
+        # Point + other
+        if isinstance(other, Point):    # + Point
+            return Point(self.x + other.x,
+                         self.y + other.y)
 
-        elif isinstance(other, int):
-            self.x += other
-            self.y += other
+        elif isinstance(other, int):    # + int
+            return Point(self.x + other,
+                         self.y + other)
 
-        return self
+        return self + other
 
-    def __radd__(self, other):
+    # 역이행 연산자 +
+    def __radd__(self, other):  # other + Point
         if isinstance(other, int):
-            self.x += other
-            self.y += other
+            return Point(self.x + other,
+                         self.y + other)
 
-        return self
+        return other + self
 
+    # - 연산자 오버로딩
     def __sub__(self, other):
         if isinstance(other, Point):
-            self.x -= other.x
-            self.y -= other.y
+            return Point(self.x - other.x,
+                         self.y - other.y)
 
         elif isinstance(other, int):
-            self.x -= other
-            self.y -= other
+            return Point(self.x - other,
+                         self.y - other)
 
-        return self
+        return self - other
 
     def __eq__(self, other):
         return self.x == other.x and self.y == other.y
